@@ -9,50 +9,77 @@
 #define pi 3.14
 #endif
 
-void convolution_1d(int,int,int ,double*, double , double );//int L,  int m , int p, int q , double * y, double h , double x
+
+#define aantal(x) sizeof(x)/sizeof(x[0])
+
+
+void convolution_1d(double[], int, double[], int, double*, int);
+
+
 int main(int argc, char* argv[])
 {
-	
-	double h[] = { 1 , 2 };
-	double x[] = { 1 , 2 , 3 };
-	int p = sizeof(h) / sizeof(h[0]);
-	int q = sizeof(x) / sizeof(x[0]);
-	printf("p\n");
-	printf("%d\n", p);
-	printf("q\n");
-	printf("%d\n", q);
-	int L = q + p - 2;// berekenen van de lengte van de output array + rekening houdendede met indexing 
-	printf("L is \n");
-	printf("%d\n", L);
+
+	double h[2] = { 1,2 };
+	double k[3] = { 1,2,3 };
+	int hlen = aantal(h);
+	int xlen = aantal(k);
+	int L;
+
+	L = hlen + xlen - 1;
 	double *y = calloc(L, sizeof(double));
-	convolution_1d( L,    p,  q,   y,  h[p],  x[q]);
+	printf("lengte x =%d \n", xlen);
+	printf("lengte h =%d \n", hlen);
+	printf("Lengte van y(L) =%d \n\n", L);
 
+	convolution_1d(k, xlen, h, hlen, y, L);
 
-}
-
-void convolution_1d(int L, int p, int q, double * y, double h, double x)
-{
-
-	for (int n = 0; n < L; n++)
+	for (int i = 0; i < L; i++)
 	{
-		if (n>q-1)
-		{	
-			q = q;
-		}
-		else
-		{
-			q = 0;
-		}
-		if (p>p-1)
-		{
-			p = p;
-		}
-		else
-		{
-			p = 0;
-		}
+		printf("%lf\n", y[i]);
 	}
 
+	//return 0;
 
 }
 
+
+
+void convolution_1d(double x[], int xlen, double h[], int hlen, double* y, int L)
+{
+	int kmin = 0;
+	int kmax = 0;
+	int n;
+	int k = 0;
+
+
+	for (n = 0; n < L; n++)
+	{
+
+		if (n >= xlen - 1)
+		{
+			kmax = xlen - 1;
+		}
+		else
+			kmax = n;
+
+		if (n <= hlen - 1)
+		{
+			kmin = 0;
+		}
+		else
+		{
+			kmin = n - (hlen - 1);
+		}
+
+		printf("n = %d\t kmin = %d\t kmax = %d\n", n, kmin, kmax);
+
+
+		for (k = kmin; k <= kmax; k++)
+		{
+			y[n] += x[k] * h[n - k];
+		}
+
+
+
+	}
+}

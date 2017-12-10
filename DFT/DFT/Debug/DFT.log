@@ -1,0 +1,9 @@
+﻿  Source.c
+c:\users\ecto1\documents\github\dsp\dft\dft\source.c(32): warning C4133: 'function': incompatible types - from 'size_t *' to 'double *'
+c:\users\ecto1\documents\github\dsp\dft\dft\source.c(33): warning C4133: 'function': incompatible types - from 'size_t *' to 'double *'
+c:\users\ecto1\documents\github\dsp\dft\dft\source.c(30): warning C4133: 'initializing': incompatible types - from 'double *' to 'size_t *'
+c:\users\ecto1\documents\github\dsp\dft\dft\source.c(31): warning C4133: 'initializing': incompatible types - from 'double *' to 'size_t *'
+c:\users\ecto1\documents\github\dsp\dft\dft\source.c(38): warning C4477: 'printf' : format string '%lf' requires an argument of type 'double', but variadic argument 1 has type '::size_t'
+c:\users\ecto1\documents\github\dsp\dft\dft\source.c(45): warning C4477: 'printf' : format string '%lf' requires an argument of type 'double', but variadic argument 1 has type '::size_t'
+c:\users\ecto1\documents\github\dsp\dft\dft\source.c(52): warning C4477: 'printf' : format string '%lf' requires an argument of type 'double', but variadic argument 1 has type '::size_t'
+  DFT.vcxproj -> C:\Users\Ecto1\Documents\GitHub\dsp\DFT\Debug\DFT.exe
